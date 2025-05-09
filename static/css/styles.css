@@ -1,0 +1,112 @@
+/* Root Variables (assuming you have these defined) */
+:root {
+  --main-font: 'Cinzel', serif;
+  --second-font: 'Montserrat', sans-serif;
+  --font-color: rgb(255, 255, 255);
+  --font-size: 15px;
+  /* --body-bg: rgb(0, 0, 0); */
+}
+
+body {
+  color: var(--font-color);
+  font-family: var(--second-font);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.full-bleed {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.home-container {
+  position: relative; /* Positioning context for absolute children */
+  overflow: hidden; /* Clip anything that goes outside */
+  min-height: 100vh; /* Ensure it takes full viewport height */
+}
+
+#home {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex; /* Enable flexbox for centering content */
+  justify-content: flex-start; /* Align items to the top */
+  align-items: flex-start; /* Align items to the top */
+}
+
+
+.home-container video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(5px);
+  transition: filter 2s ease-in-out;
+  z-index: -1;
+}
+
+
+.home-container.normal-video video {
+  filter: blur(0);
+}
+.main-header {
+  position: absolute; /* Position within the home-container */
+  top: 20px; /* Adjust vertical position from the top */
+  left: 20px; /* Adjust horizontal position from the left */
+  right: 20px; /* Adjust horizontal position from the right */
+  z-index: 2; /* Ensure it's above the video */
+  display: flex;
+  align-items: center; /* Vertically align logo and nav container */
+  justify-content: space-between; /* Space out logo and nav container */
+  padding: 10px 20px; /* Add padding around the header */
+}
+
+
+.client-logo {
+  width: 300px; /* Adjust logo size */
+  height: auto;
+  filter: invert(100%); /* Keep logo white */
+}
+
+.nav-container { /* Style the navigation container to be at the center */
+  position: absolute;
+  font-family: var(--second-font);
+  font-weight: normal;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 60%; /* Adjust vertical center if needed */
+  /* transform: translate(-50%, -50%); If you want perfect vertical center of the header */
+}
+
+.main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Align nav items in a row */
+}
+
+.main-nav ul li {
+  margin-left: 20px; /* Add spacing between nav items */
+}
+
+.main-nav ul li:first-child {
+  margin-left: 0; /* Remove left margin for the first item */
+}
+
+.main-nav ul li a {
+  text-decoration: none;
+  color: var(--font-color); /* White text color for links */
+  font-family: var(--second-font);
+  font-size: var(--font-size); 
+  padding: 10px 15px; /* Add padding around link text */
+}
+
+.main-nav ul li a:hover {
+  text-decoration: underline; /* Add underline on hover */
+  color: rgb(0, 0, 0);
+}
