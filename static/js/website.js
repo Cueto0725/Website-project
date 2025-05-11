@@ -1,8 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const homeContainer = document.querySelector('.home-container');
-  if (homeContainer) {
-    setTimeout(function() {
-      homeContainer.classList.add('normal-video');
-    }, 3000); // 3000 milliseconds = 3 seconds
-  }
+  const header = document.querySelector('.main-header');
+  const navLinks = document.querySelectorAll('.main-nav ul li a');
+  const logo = document.querySelector('.client-logo');
+
+  window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > 50) { // Scrolled down past a threshold
+      header.classList.add('scrolled');
+      navLinks.forEach(link => {
+        link.style.color = 'black';
+      });
+      if (logo) {
+        logo.style.filter = 'invert(0%)';
+      }
+    } else { // At the very top
+      header.classList.remove('scrolled');
+      navLinks.forEach(link => {
+        link.style.color = 'var(--font-main-color)';
+      });
+      if (logo) {
+        logo.style.filter = 'invert(100%)';
+      }
+    }
+  });
 });

@@ -1,20 +1,21 @@
-/* Root Variables (assuming you have these defined) */
+/* Root Variables */
 :root {
   --main-font: 'Cinzel', serif;
   --second-font: 'Montserrat', sans-serif;
-  --font-color: rgb(255, 255, 255);
-  --font-size: 15px;
-  /* --body-bg: rgb(0, 0, 0); */
+  --font-main-color: rgb(255, 255, 255);
+  --font-second-color: rgb(0, 0, 0);
+  --font-size: 15px; /* Body */
+  --font-size-tagline: 17px; /* Tagline */
+  --font-size-title: 3rem;
 }
 
 body {
-  color: var(--font-color);
   font-family: var(--second-font);
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-weight: normal;
+  background-color: white; /* Set the background color to white */
 }
-
 
 .full-bleed {
   width: 100%;
@@ -22,24 +23,24 @@ body {
   margin: 0;
 }
 
-.home-container {
-  position: relative; /* Positioning context for absolute children */
-  overflow: hidden; /* Clip anything that goes outside */
-  min-height: 100vh; /* Ensure it takes full viewport height */
-}
-
+/* --- Home/Header Section Styles --- */
 #home {
   position: relative;
-  min-height: 100vh;
+  height: 100vh; /* Example: 80% of the viewport height */
   overflow: hidden;
-  display: flex; /* Enable flexbox for centering content */
-  justify-content: flex-start; /* Align items to the top */
-  align-items: flex-start; /* Align items to the top */
 }
 
+.home-container {
+  position: relative;
+  height: 100%; /* Make the container fill the #home section */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
 
 .home-container video {
-  position: fixed;
+  position: absolute; /* Changed from fixed to absolute */
   top: 0;
   left: 0;
   width: 100%;
@@ -50,63 +51,189 @@ body {
   z-index: -1;
 }
 
-
-.home-container.normal-video video {
-  filter: blur(0);
-}
-.main-header {
-  position: absolute; /* Position within the home-container */
-  top: 20px; /* Adjust vertical position from the top */
-  left: 20px; /* Adjust horizontal position from the left */
-  right: 20px; /* Adjust horizontal position from the right */
-  z-index: 2; /* Ensure it's above the video */
-  display: flex;
-  align-items: center; /* Vertically align logo and nav container */
-  justify-content: space-between; /* Space out logo and nav container */
-  padding: 10px 20px; /* Add padding around the header */
+.home-title {
+  text-align: center;
+  z-index: 1;
+  font-weight: bold;
 }
 
-
-.client-logo {
-  width: 300px; /* Adjust logo size */
-  height: auto;
-  filter: invert(100%); /* Keep logo white */
+.eyebrow {
+  font-size: var(--font-size-tagline);
+  font-family: var(--second-font);
+  color: var(--font-main-color);
+  font-weight: normal;
+  margin-bottom: 10px;
 }
 
-.nav-container { /* Style the navigation container to be at the center */
-  position: absolute;
+.home-title h1 {
+  color: var(--font-main-color);
+  font-size: var(--font-size-title);
+  font-family: var(--main-font);
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.home-title h2 {
+  /* Existing styles */
+  color: var(--font-main-color);
+  font-size: var(--font-size-tagline);
   font-family: var(--second-font);
   font-weight: normal;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 60%; /* Adjust vertical center if needed */
-  /* transform: translate(-50%, -50%); If you want perfect vertical center of the header */
+  margin-top: 5px;
+}
+
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Keep space-between for logo and nav */
+  padding: 10px 20px;
+  background-color: transparent; /* Initially transparent */
+  transition: background-color 0.3s ease-in-out;
+}
+
+.main-header.scrolled {
+  background-color: white; /* White background when scrolled */
+}
+
+.main-header.scrolled .main-nav ul li a {
+  color: black; /* Black text when scrolled */
+}
+
+.client-logo {
+  width: auto; /* Adjust as needed */
+  max-width: 250px; /* Ensure it doesn't get too large */
+  margin-left: 50px;
+  height: auto;
+  filter: invert(100%);
+  transition: filter 0.3s ease-in-out;
+}
+
+.main-header.scrolled .client-logo {
+  filter: invert(0%); /* Original logo color when scrolled */
+}
+
+.nav-container {
+  display: flex; /* Enable flexbox for centering */
+  justify-content: center; /* Center the navigation items */
+  align-items: center;
+  flex-grow: 1; /* Allow it to take up available space */
 }
 
 .main-nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex; /* Align nav items in a row */
+  display: flex;
+  justify-content: center; /* Center the list items horizontally */
 }
 
 .main-nav ul li {
-  margin-left: 20px; /* Add spacing between nav items */
+  margin-left: 20px;
 }
 
 .main-nav ul li:first-child {
-  margin-left: 0; /* Remove left margin for the first item */
+  margin-left: 0;
 }
 
 .main-nav ul li a {
-  text-decoration: none;
-  color: var(--font-color); /* White text color for links */
+  text-decoration: underline;
+  color: var(--font-main-color); /* White text color for links initially */
   font-family: var(--second-font);
-  font-size: var(--font-size); 
-  padding: 10px 15px; /* Add padding around link text */
+  font-size: var(--font-size);
+  padding: 10px 15px;
+  transition: color 0.3s ease-in-out;
 }
 
 .main-nav ul li a:hover {
-  text-decoration: underline; /* Add underline on hover */
-  color: rgb(0, 0, 0);
+  text-decoration: underline;
+  color: black;
+}
+
+/* --- About Section Styles --- */
+.about-section {
+  display: flex;
+  align-items: center;
+  max-width: 1400px;
+  padding-top: 96px;
+  padding-bottom: 96px;
+  padding-left: 80px;
+  padding-right: 80px;
+  gap: 30px;
+  background-color: rgb(255, 255, 255);
+}
+
+.about-container {
+  position: relative;
+  height: 100%; /* Make the container fill the #home section */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.about-image {
+  max-width: 500px;
+  height: auto;
+  border-radius: 5px;
+  margin-left: 50px;
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.about-image:hover {
+  transform: scale(1.05); /* Zoom in slightly */
+}
+
+.about-text {
+  flex-grow: 1;
+  margin-left: 150px;
+  margin-bottom: 50px;
+}
+
+.about-text h2 {
+  color: var(--font-second-color);
+  font-size: var(--font-size-title);
+  font-family: var(--main-font);
+  text-align: center;
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
+
+.about-text .eyebrow {
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.about-text p {
+  color: var(--font-second-color);
+  font-size: var(--font-size-tagline);
+  font-family: var(--second-font);
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+.learn-more-button {
+  border: 2px solid black;
+  padding: 10px;
+  background-color: transparent;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+.learn-more-button:hover {
+  background-color: black;
+  color: white;
 }
