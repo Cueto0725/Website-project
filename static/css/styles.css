@@ -6,9 +6,11 @@
   --font-second-color: rgb(0, 0, 0);
   --font-size: 17px; /* Body */
   --font-size-tagline: 17px; /* Tagline */
+  --font-size-subtitle: 20px; /* Subtitle */
   --font-size-title: 3rem;
   
 }
+
 
 body {
   font-family: var(--second-font);
@@ -18,7 +20,6 @@ body {
   overflow-x: hidden;
 }
 
-}
 
 .full-bleed {
   width: 100%;
@@ -35,23 +36,37 @@ body {
 
 .home-container {
   position: relative;
-  height: 100%; /* Make the container fill the #home section */
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 }
 
+
+
+
 .home-container video {
-  position: absolute; /* Changed from fixed to absolute */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(5px);
   transition: filter 2s ease-in-out;
-  z-index: -1;
+  z-index: -2; /* Push further back */
+}
+
+.home-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* Your black overlay at 30% */
+  z-index: -1; /* Should be above the video but behind content */
+  pointer-events: none; /* Ensures it's non-interactive */
 }
 
 .home-title {
@@ -85,19 +100,26 @@ body {
   margin-top: 5px;
 }
 
+
 .main-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  display: flex;
-  align-items: center;
   padding: 10px 10px;
   background-color: transparent; /* Initially transparent */
   transition: background-color 0.3s ease-in-out;
 }
 
+.header-container{
+  margin-inline: auto;
+  display: flex;
+  gap: 44px;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1440px;
+}
 .main-header.scrolled {
   background-color: white; /* White background when scrolled */
 }
@@ -108,8 +130,7 @@ body {
 
 .client-logo {
   width: auto; /* Adjust as needed */
-  max-width: 250px; /* Ensure it doesn't get too large */
-  height: auto;
+  max-height: 80px;
   filter: invert(100%);
   transition: filter 0.3s ease-in-out;
 }
@@ -117,7 +138,6 @@ body {
 
 .client-logo {
   margin-left: 20px; /* Adjust left spacing */
-  margin-right: auto; /* Push other items away */
 }
 
 
@@ -127,7 +147,7 @@ body {
 
 .nav-container {
   display: flex; /* Enable flexbox for centering */
-  justify-content: center; /* Center the navigation items */
+  justify-content: flex-end; /* Center the navigation items */
   align-items: center;
   flex-grow: 1; /* Allow it to take up available space */
   margin-right: 100px;
@@ -154,7 +174,6 @@ body {
   color: var(--font-main-color); /* White text color for links initially */
   font-family: var(--second-font);
   font-size: var(--font-size);
-  padding: 10px 15px;
   transition: color 0.3s ease-in-out;
 }
 
@@ -170,8 +189,8 @@ body {
   gap: 4px; /* Even spacing between lines */
   width: 30px;
   cursor: pointer;
-  margin-left: auto;
-  margin-right: 20px;
+  margin-right: 20px; 
+  margin-left: 20px;
 }
 
 .bar {
@@ -223,7 +242,7 @@ body {
 .about-section {
   display: flex;
   align-items: center;
-  max-width: 1400px;
+  max-width: auto;
   padding-top: 96px;
   padding-bottom: 96px;
   padding-left: 80px;
@@ -234,26 +253,17 @@ body {
   justify-content: center; /* Center the content horizontally on larger screens */
 }
 
-.about-container {
-  position: relative;
-  height: 100%; /* Make the container fill the #home section */
-  display: flex;
-  /* Removed justify-content: center; align-items: center; here */
-  overflow: hidden;
-  max-width: 1200px; /* Optional: Limit the width of the container for better centering */
-  width: 100%; /* Ensure it takes the full width of the section up to max-width */
+.about-container{
+  max-width: 1440px;
+  margin-inline: auto;
 }
 
 .about-image {
   max-width: 500px;
   height: auto;
   border-radius: 5px;
-  transition: transform 0.3s ease; /* Smooth transition */
 }
 
-.about-image:hover {
-  transform: scale(1.05); /* Zoom in slightly */
-}
 
 .about-text-container { /* Added this container for better text alignment */
   flex-grow: 1;
@@ -291,24 +301,23 @@ body {
   line-height: 1.6;
   margin-bottom: 15px;
   text-align: justify; /* Keep text justified */
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  hyphens: auto;
+ 
 }
 
-.learn-more-button {
+.dark-btn__transparent {
   border: 2px solid black;
-  padding: 10px;
+  padding: 10px 20px;
+  min-width: 180px;
   background-color: transparent;
   color: black;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
   margin-top: 15px;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
-.learn-more-button:hover {
+.dark-btn__transparent:hover {
   background-color: black;
   color: white;
 }
@@ -375,17 +384,28 @@ body {
 
 
 /* --- GET-IT-SOLD-CONTAINER --- */
+#features{
+   background-color: rgb(0, 0, 0); /* Ensure container background is black */
+}
+
+
+.features-container{
+  max-width: 1440px;
+  margin-inline: auto;
+}
+
+
 .get-it-sold-container {
   display: flex;
   align-items: center;
-  max-width: 1400px;
+  max-width: auto;
   padding-bottom: 96px;
   padding-top: 96px;
   padding-left: 80px;
   padding-right: 80px;
   gap: 30px;
   width: 100%;
-  background-color: rgb(0, 0, 0); /* Ensure container background is black */
+ 
   justify-content: center; /* Center the content horizontally on larger screens */
   flex-wrap: wrap; /* Allow content to wrap on smaller screens */
 }
@@ -411,9 +431,8 @@ body {
   text-align: left; /* Center the eyebrow text within the text block */
   margin-bottom: 10px;
   margin-top: 10px;
-  color: var(--font-main-color)
+  color: var(--font-main-color);
   font-size: var(--font-size-tagline);
-
 }
 
 
@@ -435,13 +454,11 @@ body {
 
 .text-content p {
   color: var(--font-main-color);
-  font-size: var(font-size);
+  font-size: var(--font-size-subtitle);
   font-family: var(--second-font);
   line-height: 1.6;
   text-align: justify; /* Keep text justified */
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  hyphens: auto;
+
 }
 
 
@@ -452,13 +469,15 @@ body {
   text-align: right;
 }
 
+
 .top-residential {
   max-width: 100%;
   width: 600px;
   height: auto;
   border-radius: 8px;
-  margin-right:50px;
+  margin-right: 50px;
 }
+
 
 
 .dont-just-list-it-content {
@@ -488,13 +507,10 @@ body {
 
 .dont-just-list-it-content .text-content p {
   color: var(--font-main-color);
-  font-size: var(--font-size);
+  font-size: var(--font-size-subtitle);
   font-family: var(--second-font);
   line-height: 1.6;
   text-align: justify;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  hyphens: auto;
 }
 
 .dont-just-list-it-content .image-content {
@@ -503,6 +519,7 @@ body {
   text-align: left; /* Align image left */
 }
 
+
 .dont-just-list-it-img {
   max-width: 100%;
   width: 600px;
@@ -510,6 +527,7 @@ body {
   border-radius: 8px;
   margin-left: 50px;
 }
+
 
 .guide-to-buyers-content {
   display: flex;
@@ -537,25 +555,176 @@ body {
 
 .text-content p {
   color: var(--font-main-color);
-  font-size: var(--font-size);
+  font-size: var(--font-size-subtitle);
   font-family: var(--second-font);
   line-height: 1.6;
   text-align: justify; /* Keep text justified */
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  hyphens: auto;
+  word-wrap: break-word; /* Prevent word cutting */
 }
-
+  
 .image-content {
   flex: 1;
   min-width: 300px;
   text-align: right;
 }
 
-.guide-to-buyers {
+
+.guide-to-buyers-img {
   max-width: 100%;
   width: 600px;
   height: auto;
   border-radius: 8px;
   margin-right: 50px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+#listings {
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("../images/Find-your-dream-home.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.listings-container{
+ max-width: 1440px;
+ margin-inline: auto;
+ display: flex;
+ flex-direction: column;
+}
+
+.Listing-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 100%;
+  max-width: 1068px;
+  margin-left: 136px;
+  margin-right: 186px;
+  margin-block: 64px;  
+}
+
+
+.Listing-center {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  max-width: 1068px;
+  padding: 60px 60px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-inline: auto;
+  gap: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.Listing-content .eyebrow {
+  color: var(--font-main-color);
+  font-size: var(--font-size-tagline);
+  margin: 0px;
+}
+
+.Listing-content h2 {
+  color: var(--font-main-color);
+  font-size: var(--font-size-title);
+  font-family: var(--main-font);
+  margin: 0px;
+}
+
+
+
+
+.form-column {
+  display:flex;
+  flex-direction: row;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.form-type, .form-loc , .form-sort{
+  flex-basis: 100%;
+
+}
+
+
+
+.form-input{
+  border: 1px solid #999;
+  padding: 10px;
+  background-color: transparent;
+  color: black;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: 15px;
+  border-radius: 20px;
+  width: 100%;
+  max-height: 18px;
+}
+
+.form-row{
+  display: flex; 
+  gap: 8px;
+
+}
+
+/* Button */
+.find-button {
+  height: 40px;
+  padding: 0 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  font-family: var(--second-font);
+  flex: 1;
+  width: 100%
+}
+
+.form-btn{
+  width:100%;
+}
+
+.find-button:hover {
+  background-color: white; /* Set background to white */
+  color: black; /* Set font color to black */
+  border: 1px solid black; /* Add black border on hover */
+}
+
+
+.logo-marquee {
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    z-index: 2;
+    max-width: 1000px;
+    margin-inline: auto;
+
+}
+
+.logo-wrapper {
+    display: flex;
+    gap: 80px;
+    animation: move-logos 20s linear infinite;
+}
+
+.logo {
+    height: 50px; /* Adjust the size of the logos */
+    margin-right: 50px; /* Adjust spacing between logos */
+    filter: invert(1);
+}
+
+@keyframes move-logos {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }

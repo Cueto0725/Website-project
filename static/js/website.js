@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         logo.style.filter = 'invert(0%)';
       }
       if (hamburger) {
-        hamburger.classList.add('scrolled'); // Add class on scroll
+        hamburger.classList.add('scrolled'); 
       }
     } else {
       header.classList.remove('scrolled');
@@ -20,8 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
         logo.style.filter = 'invert(100%)';
       }
       if (hamburger) {
-        hamburger.classList.remove('scrolled'); // Remove class on scroll
+        hamburger.classList.remove('scrolled'); 
       }
     }
   }); 
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    
 });
