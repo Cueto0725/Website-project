@@ -21,17 +21,12 @@ body {
 }
 
 
-.full-bleed {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
-
 /* --- Home/Header Section Styles --- */
 #home {
   position: relative;
   height: 100vh; /* Example: 80% of the viewport height */
   overflow: hidden;
+  
 }
 
 .home-container {
@@ -120,6 +115,8 @@ body {
   align-items: center;
   max-width: 1440px;
 }
+
+
 .main-header.scrolled {
   background-color: white; /* White background when scrolled */
 }
@@ -205,6 +202,18 @@ body {
   background-color: black;
 }
 
+
+/* Hide header when scrolling down */
+.main-header.hide-header {
+  transform: translateY(-100%);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth, easing transition */
+}
+
+/* Ensure the header comes back smoothly when scrolling up */
+.main-header {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease-in-out;
+}
+
 /* Responsive behavior */
 @media (max-width: 768px) {
   .nav-container {
@@ -212,7 +221,6 @@ body {
     position: absolute;
     top: 60px;
     right: 20px;
-    background-color: white;
     padding: 20px;
     border-radius: 10px;
     z-index: 999;
@@ -242,11 +250,8 @@ body {
 .about-section {
   display: flex;
   align-items: center;
-  max-width: auto;
   padding-top: 96px;
   padding-bottom: 96px;
-  padding-left: 80px;
-  padding-right: 80px;
   gap: 30px;
   width: 100%;
   background-color: rgb(255, 255, 255);
@@ -266,7 +271,6 @@ body {
 
 
 .about-text-container { /* Added this container for better text alignment */
-  flex-grow: 1;
   display: flex; /* Enable flexbox for centering text within */
   justify-content: center; /* Center the text block horizontally */
 }
@@ -274,8 +278,7 @@ body {
 .about-text {
   /* Removed fixed left margin */
   margin-bottom: 50px;
-  padding-left: 30px; /* Add some left padding for text */
-  padding-right: 30px; /* Add some right padding for text */
+  padding-left: 75px; /* Add some left padding for text */
   max-width: 600px; /* Limit the width of the text for readability */
 }
 
@@ -356,7 +359,6 @@ body {
 
   .about-image {
     max-width: 80%; 
-    margin-left: 0; 
     margin-bottom: 30px; 
   }
 
@@ -368,10 +370,6 @@ body {
   }
 
   .about-text {
-    margin-left: 0; 
-    margin-bottom: 40px;
-    padding-left: 0; 
-    padding-right: 0; 
     text-align: left; 
     max-width: 600px; 
   } 
@@ -385,13 +383,15 @@ body {
 
 /* --- GET-IT-SOLD-CONTAINER --- */
 #features{
-   background-color: rgb(0, 0, 0); /* Ensure container background is black */
+  background-color: rgb(0, 0, 0); /* Ensure container background is black */
+  width: 100%;
 }
 
 
 .features-container{
   max-width: 1440px;
   margin-inline: auto;
+  flex-direction: row;
 }
 
 
@@ -403,9 +403,6 @@ body {
   padding-top: 96px;
   padding-left: 80px;
   padding-right: 80px;
-  gap: 30px;
-  width: 100%;
- 
   justify-content: center; /* Center the content horizontally on larger screens */
   flex-wrap: wrap; /* Allow content to wrap on smaller screens */
 }
@@ -423,7 +420,6 @@ body {
   flex: 1;
   min-width: 300px;
   color: white;
-  margin-left: 50px;
 }
 
 
@@ -454,7 +450,7 @@ body {
 
 .text-content p {
   color: var(--font-main-color);
-  font-size: var(--font-size-subtitle);
+  font-size: var(--font-size);
   font-family: var(--second-font);
   line-height: 1.6;
   text-align: justify; /* Keep text justified */
@@ -467,12 +463,13 @@ body {
   flex: 1;
   min-width: 300px;
   text-align: right;
+  margin-inline: auto;
 }
 
 
 .top-residential {
   max-width: 100%;
-  width: 600px;
+  width: 100%;
   height: auto;
   border-radius: 8px;
   margin-right: 50px;
@@ -507,7 +504,7 @@ body {
 
 .dont-just-list-it-content .text-content p {
   color: var(--font-main-color);
-  font-size: var(--font-size-subtitle);
+  font-size: var(--font-size);
   font-family: var(--second-font);
   line-height: 1.6;
   text-align: justify;
@@ -555,7 +552,7 @@ body {
 
 .text-content p {
   color: var(--font-main-color);
-  font-size: var(--font-size-subtitle);
+  font-size: var(--font-size);
   font-family: var(--second-font);
   line-height: 1.6;
   text-align: justify; /* Keep text justified */
@@ -691,11 +688,6 @@ body {
   width:100%;
 }
 
-.find-button:hover {
-  background-color: white; /* Set background to white */
-  color: black; /* Set font color to black */
-  border: 1px solid black; /* Add black border on hover */
-}
 
 
 .logo-marquee {
@@ -728,3 +720,181 @@ body {
         transform: translateX(-100%);
     }
 }
+
+
+#services {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* Ensure that it doesn't overlap */
+}
+
+.services-container {
+  width: 100%;
+  max-width: 1440px; /* overall page width */
+  padding-left: 140px;
+  box-sizing: border-box;
+   padding-bottom: 80px;
+  padding-top: 96px;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.services-image {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* for responsiveness */
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.services-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.services-content .eyebrow {
+  color: var(--font-second-color);
+  font-size: var(--font-size-tagline);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.services-content h2 {
+  font-size: var(--font-size-title);
+  font-family: var(--main-font);
+  color: #000;
+  margin: 0;
+}
+
+.services-info {
+  color: var(--second-font);
+  font-size: var(--font-size);
+  font-weight: bold;
+  font-family: var(--second-font);
+}
+
+.side-image {
+  flex: 1;
+  min-width: 300px;
+  height: 500px; /* Adjust height for the side image */
+}
+
+.side-image img {
+  width: 100%;
+  height: 100%; /* Ensures the side image scales down based on flex */
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.bottom-images {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.bottom-images img {
+  flex: 1;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Slightly enlarge the rightmost image */
+.bottom-images img:last-child {
+  flex: 1.3;
+}
+
+
+
+/* GALLERY SECTION */
+#gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+  width: 100%; /* Ensure it takes the full width of the parent container */
+  margin: 0 auto;
+}
+
+.gallery-container {
+  max-width: 1440px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  padding-left: 80px; /* Left padding */
+  padding-right: 80px; /* Right padding */
+}
+
+.gallery-content {
+  align-self: flex-start;
+  text-align: left;
+  margin-bottom: 20px; /* spacing below the heading */
+  padding-left: 80px;
+}
+
+
+.gallery-content .eyebrow {
+  color: var(--font-second-color);
+  font-size: var(--font-size-tagline);
+  letter-spacing: 2px;
+}
+
+.gallery-content h2 {
+  font-size: var(--font-size-title);
+  font-family: var(--main-font);
+  color: #000;
+  margin: 0;
+}
+
+.main-image {
+  width: calc(100% - 160px); /* Subtract padding from total width */
+  height: calc(100vh - 192px - 100px); /* Full height minus paddings & thumbnails */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  margin-bottom: 15px;
+  transition: background-image 0.5s ease;
+}
+
+.thumbnails {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+.thumb {
+  width: 100px;
+  height: 70px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.3s ease;
+}
+
+.thumb.active,
+.thumb:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Images set via CSS classes */
+.thumb-1 { background-image: url('../images/Photo-gallery-1.webp'); }
+.thumb-2 { background-image: url('../images/Photo-gallery-2.webp'); }
+.thumb-3 { background-image: url('../images/Photo-gallery-3.webp'); }
+.thumb-4 { background-image: url('../images/Photo-gallery-4.webp'); }
+.thumb-5 { background-image: url('../images/Photo-gallery-5.webp'); }
+.thumb-6 { background-image: url('../images/Photo-gallery-6.webp'); }
+.thumb-7 { background-image: url('../images/Photo-gallery-7.webp'); }

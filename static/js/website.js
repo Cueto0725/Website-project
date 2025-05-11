@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   window.addEventListener('scroll', function () {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    // Add scrolled behavior when passing 50px
     if (scrollTop > 50) {
       header.classList.add('scrolled');
       logo && (logo.style.filter = 'invert(0%)');
@@ -20,24 +18,64 @@ document.addEventListener('DOMContentLoaded', function () {
       hamburger && hamburger.classList.remove('scrolled');
     }
 
-    // Detect scrolling direction (down or up)
     if (scrollTop > lastScrollTop) {
-      // Scrolling down: hide the header
       header.classList.add('hide-header');
     } else {
-      // Scrolling up: show the header
       header.classList.remove('hide-header');
     }
-
-    // Clear any existing timeout for detecting stop
     clearTimeout(scrollTimeout);
-
-    // Set a timeout to hide the header after the user stops scrolling for 500ms
     scrollTimeout = setTimeout(function () {
       header.classList.add('hide-header');
-    }, 1500); // Adjust this time for how soon you want to hide the header after scroll stops
+    }, 1500); 
 
-    // Update last scroll position
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const mainImage = document.getElementById("mainImage");
+  const thumbnails = document.querySelectorAll(".thumb");
+
+  // Get the background-image from the first thumb and set it as main image
+  if (thumbnails.length > 0) {
+    const bg = window.getComputedStyle(thumbnails[0]).backgroundImage;
+    mainImage.style.backgroundImage = bg;
+    thumbnails[0].classList.add("active");
+  }
+
+  thumbnails.forEach(thumb => {
+    thumb.addEventListener("click", () => {
+      const bg = window.getComputedStyle(thumb).backgroundImage;
+      mainImage.style.backgroundImage = bg;
+
+      thumbnails.forEach(t => t.classList.remove("active"));
+      thumb.classList.add("active");
+    });
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const mainImage = document.getElementById('mainImage');
+  const thumbs = document.querySelectorAll('.thumb');
+
+  // Default load the first image
+  const defaultImage = getComputedStyle(thumbs[0]).backgroundImage;
+  mainImage.style.backgroundImage = defaultImage;
+  thumbs[0].classList.add('active');
+
+  thumbs.forEach((thumb) => {
+    thumb.addEventListener('click', () => {
+      // Remove active class from all thumbnails
+      thumbs.forEach(t => t.classList.remove('active'));
+
+      // Set new background for main image
+      const bgImage = getComputedStyle(thumb).backgroundImage;
+      mainImage.style.backgroundImage = bgImage;
+
+      // Mark as active
+      thumb.classList.add('active');
+    });
   });
 });
