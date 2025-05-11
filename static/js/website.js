@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   const header = document.querySelector('.main-header');
   const logo = document.querySelector('.client-logo');
+  const hamburger = document.querySelector('.hamburger-menu'); // Get the hamburger menu
 
   window.addEventListener('scroll', function() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -10,23 +11,17 @@ document.addEventListener('DOMContentLoaded', function() {
       if (logo) {
         logo.style.filter = 'invert(0%)';
       }
+      if (hamburger) {
+        hamburger.classList.add('scrolled'); // Add class on scroll
+      }
     } else {
       header.classList.remove('scrolled');
       if (logo) {
         logo.style.filter = 'invert(100%)';
       }
+      if (hamburger) {
+        hamburger.classList.remove('scrolled'); // Remove class on scroll
+      }
     }
-  });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  const hamburgerMenu = document.querySelector('.hamburger-menu');
-  const navContainer = document.querySelector('.nav-container');
-
-  if (hamburgerMenu && navContainer) {
-    hamburgerMenu.addEventListener('click', () => {
-      navContainer.classList.toggle('active');
-      hamburgerMenu.classList.toggle('open'); // Optional: for hamburger menu animation
-    });
-  }
+  }); 
 });
