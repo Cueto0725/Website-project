@@ -1,27 +1,32 @@
 document.addEventListener('DOMContentLoaded', function() {
   const header = document.querySelector('.main-header');
-  const navLinks = document.querySelectorAll('.main-nav ul li a');
   const logo = document.querySelector('.client-logo');
 
   window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    if (scrollTop > 50) { // Scrolled down past a threshold
+    if (scrollTop > 50) {
       header.classList.add('scrolled');
-      navLinks.forEach(link => {
-        link.style.color = 'black';
-      });
       if (logo) {
         logo.style.filter = 'invert(0%)';
       }
-    } else { // At the very top
+    } else {
       header.classList.remove('scrolled');
-      navLinks.forEach(link => {
-        link.style.color = 'var(--font-main-color)';
-      });
       if (logo) {
         logo.style.filter = 'invert(100%)';
       }
     }
   });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburgerMenu = document.querySelector('.hamburger-menu');
+  const navContainer = document.querySelector('.nav-container');
+
+  if (hamburgerMenu && navContainer) {
+    hamburgerMenu.addEventListener('click', () => {
+      navContainer.classList.toggle('active');
+      hamburgerMenu.classList.toggle('open'); // Optional: for hamburger menu animation
+    });
+  }
 });

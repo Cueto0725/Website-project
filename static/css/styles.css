@@ -90,8 +90,7 @@ body {
   z-index: 100;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Keep space-between for logo and nav */
-  padding: 10px 20px;
+  padding: 10px 10px;
   background-color: transparent; /* Initially transparent */
   transition: background-color 0.3s ease-in-out;
 }
@@ -107,11 +106,17 @@ body {
 .client-logo {
   width: auto; /* Adjust as needed */
   max-width: 250px; /* Ensure it doesn't get too large */
-  margin-left: 50px;
   height: auto;
   filter: invert(100%);
   transition: filter 0.3s ease-in-out;
 }
+
+
+.client-logo {
+  margin-left: 20px; /* Adjust left spacing */
+  margin-right: auto; /* Push other items away */
+}
+
 
 .main-header.scrolled .client-logo {
   filter: invert(0%); /* Original logo color when scrolled */
@@ -122,6 +127,7 @@ body {
   justify-content: center; /* Center the navigation items */
   align-items: center;
   flex-grow: 1; /* Allow it to take up available space */
+  margin-right: 100px;
 }
 
 .main-nav ul {
@@ -145,7 +151,7 @@ body {
   color: var(--font-main-color); /* White text color for links initially */
   font-family: var(--second-font);
   font-size: var(--font-size);
-  padding: 10px 15px;
+  padding: 10px 10px;
   transition: color 0.3s ease-in-out;
 }
 
@@ -153,6 +159,66 @@ body {
   text-decoration: underline;
   color: black;
 }
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+  display: none; /* Hidden by default on larger screens */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  margin-right: 20px; /* Adjust right spacing */
+}
+
+.hamburger-menu .bar {
+  width: 100%;
+  height: 3px;
+  background-color: var(--font-main-color); /* Use the white font color */
+  transition: 0.3s;
+}
+
+.main-header.scrolled .hamburger-menu .bar {
+  background-color: var(--font-second-color); /* Black bars when scrolled */
+}
+
+/* Responsive behavior to show the hamburger menu and hide the navigation */
+@media (max-width: 768px) {
+  .nav-container {
+    display: none; /* Hide the full navigation */
+    position: absolute;
+    top: 60px; /* Adjust based on your header height */
+    right: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1000; /* Ensure it's above other elements */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 80%; /* Adjust width as needed */
+    max-width: 300px; /* Maximum width of the menu */
+  }
+
+  .nav-container.active {
+    display: block; /* Show the navigation when active class is added */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .main-nav ul li {
+    margin: 10px 0;
+  }
+
+  .hamburger-menu {
+    display: flex; /* Show the hamburger menu on smaller screens */
+  }
+}
+
 
 /* --- About Section Styles --- */
 .about-section {
@@ -165,22 +231,23 @@ body {
   padding-right: 80px;
   gap: 30px;
   background-color: rgb(255, 255, 255);
+  justify-content: center; /* Center the content horizontally on larger screens */
 }
 
 .about-container {
   position: relative;
   height: 100%; /* Make the container fill the #home section */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* Removed justify-content: center; align-items: center; here */
   overflow: hidden;
+  max-width: 1200px; /* Optional: Limit the width of the container for better centering */
+  width: 100%; /* Ensure it takes the full width of the section up to max-width */
 }
 
 .about-image {
   max-width: 500px;
   height: auto;
   border-radius: 5px;
-  margin-left: 50px;
   transition: transform 0.3s ease; /* Smooth transition */
 }
 
@@ -188,23 +255,31 @@ body {
   transform: scale(1.05); /* Zoom in slightly */
 }
 
-.about-text {
+.about-text-container { /* Added this container for better text alignment */
   flex-grow: 1;
-  margin-left: 150px;
+  display: flex; /* Enable flexbox for centering text within */
+  justify-content: center; /* Center the text block horizontally */
+}
+
+.about-text {
+  /* Removed fixed left margin */
   margin-bottom: 50px;
+  padding-left: 30px; /* Add some left padding for text */
+  padding-right: 30px; /* Add some right padding for text */
+  max-width: 600px; /* Limit the width of the text for readability */
 }
 
 .about-text h2 {
   color: var(--font-second-color);
   font-size: var(--font-size-title);
   font-family: var(--main-font);
-  text-align: center;
+  text-align: center; /* Center the heading within the text block */
   margin-bottom: 0px;
   margin-top: 10px;
 }
 
 .about-text .eyebrow {
-  text-align: center;
+  text-align: center; /* Center the eyebrow text within the text block */
   margin-bottom: 10px;
   margin-top: 10px;
 }
@@ -215,7 +290,7 @@ body {
   font-family: var(--second-font);
   line-height: 1.6;
   margin-bottom: 15px;
-  text-align: justify;
+  text-align: justify; /* Keep text justified */
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   hyphens: auto;
@@ -236,4 +311,64 @@ body {
 .learn-more-button:hover {
   background-color: black;
   color: white;
+}
+
+/* --- ABOUT SECTION RESPONSIVENESS --- */
+@media (max-width: 1024px) {
+  .about-section {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .about-image {
+    max-width: 400px;
+    margin-left: 20px;
+  }
+
+  .about-text {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .about-container {
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%; 
+  }
+
+  .about-image {
+    max-width: 80%; 
+    margin-left: 0; 
+    margin-bottom: 30px; 
+  }
+
+  .about-text-container {
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+  }
+
+  .about-text {
+    margin-left: 0; 
+    margin-bottom: 40px;
+    padding-left: 0; 
+    padding-right: 0; 
+    text-align: left; 
+    max-width: 600px; 
+  } 
+
+  .about-text h2,
+  .about-text .eyebrow {
+    text-align: center; 
+  }
 }
