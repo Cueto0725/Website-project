@@ -23,20 +23,19 @@ document.addEventListener('DOMContentLoaded', function () {
       hamburger && hamburger.classList.remove('scrolled');
     }
 
-    // Check if scrolling down or up
     if (scrollTop > lastScrollTop) {
       header.classList.add('hide-header');
     } else {
       header.classList.remove('hide-header');
     }
 
-    // Clear any previously set timeout
+
     clearTimeout(scrollTimeout);
 
-    // Set a new timeout to hide the header after the specified delay
+    
     scrollTimeout = setTimeout(function () {
       header.classList.add('hide-header');
-    }, vanishDelay); // Use vanishDelay here
+    }, vanishDelay); 
 
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
   });
@@ -46,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainImage = document.getElementById("mainImage");
   const thumbnails = document.querySelectorAll(".thumb");
 
-  // Get the background-image from the first thumb and set it as main image
+
   if (thumbnails.length > 0) {
     const bg = window.getComputedStyle(thumbnails[0]).backgroundImage;
     mainImage.style.backgroundImage = bg;
