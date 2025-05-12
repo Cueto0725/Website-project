@@ -896,6 +896,7 @@ body {
 .thumb-5 { background-image: url('../images/Photo-gallery-5.webp'); }
 .thumb-6 { background-image: url('../images/Photo-gallery-6.webp'); }
 .thumb-7 { background-image: url('../images/Photo-gallery-7.webp'); }
+.thumb-8 { background-image: url('../images/Valley.webp'); }
 
 #map-section {
   display: flex;
@@ -943,7 +944,7 @@ body {
 .contact-left{
   border: 2px solid #fff;
   border-radius: 10px;
-  max-height: 650px;
+  max-height: 500px;
 
 }
 
@@ -957,9 +958,10 @@ body {
 }
 
 .contact-form h2{
-  font-size: var(--font-size-subtitle);
-  font-family: var(--main-font);
+  font-size: var(--font-size-tagline);
+  font-family: var(--second-font);
   font-weight: normal;
+  text-align: center;
 }
 
 .contact-form input,
@@ -1009,6 +1011,7 @@ body {
   font-family: var(--second-font);
   font-weight: normal;
 }
+
 
 .contact-text .eyebrow {
   font-size: var(--font-size-tagline);
