@@ -410,9 +410,11 @@ body {
   justify-content: center; /* Center the content horizontally on larger screens */
   flex-wrap: wrap; /* Allow content to wrap on smaller screens */
 }
+
+
 .get-it-sold-container h3{
   font-size: 23px;
-  font-color: var(--font-main-color);
+  columns: var(--font-second-color);
 }
 .get-it-sold-content {
   display: flex;
@@ -771,7 +773,7 @@ body {
 
 .services-info {
   color: var(--second-font);
-  font-size: var(--font-size);
+  font-size: 23px;
   font-weight: bold;
   font-family: var(--second-font);
 }
@@ -939,9 +941,8 @@ body {
 }
 
 .contact-left{
-  border: 2px solid #fff;
   border-radius: 10px;
-  max-height: 500px;
+  max-height: 100%;
 
 }
 
@@ -952,12 +953,20 @@ body {
   gap: 20px;
   width: 100%;
   max-width: 500px;
+  
+}
+
+.contact-form .eyebrow {
+  font-size: var(--font-size);
+  text-align: left;
+  font-family: var(--second-font);
+  color: var(--font-main-color);
 }
 
 .contact-form h2{
-  font-size: var(--font-size-subtitle);
+  font-size: 23px;
   font-family: var(--second-font);
-  font-weight: normal;
+  font-weight: bold;
   text-align: center;
 }
 
@@ -1009,18 +1018,16 @@ body {
   font-weight: normal;
 }
 
-
 .contact-text .eyebrow {
   font-size: var(--font-size-tagline);
   color: #ffffff;
   letter-spacing: 1px;
-  text-transform: uppercase;
   font-weight: 500;
   font-weight: normal;
 }
 
 .contact-text h2 {
-  font-size: var(--font-size-title);
+  font-size: 48px;
   font-family: var(--main-font);
   font-weight: bold;
   margin: 0;
