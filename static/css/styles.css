@@ -159,7 +159,7 @@ body {
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content: center; /* Center the list items horizontally */
+  justify-content: center; 
 }
 
 .main-nav ul li {
@@ -172,7 +172,7 @@ body {
 
 .main-nav ul li a {
   text-decoration: underline;
-  color: var(--font-main-color); /* White text color for links initially */
+  color: var(--font-main-color); 
   font-family: var(--second-font);
   font-size: var(--font-size);
   transition: color 0.3s ease-in-out;
@@ -187,7 +187,7 @@ body {
 .hamburger-menu {
   display: flex;
   flex-direction: column;
-  gap: 4px; /* Even spacing between lines */
+  gap: 4px; 
   width: 30px;
   cursor: pointer;
   margin-right: 20px; 
@@ -210,10 +210,9 @@ body {
 /* Hide header when scrolling down */
 .main-header.hide-header {
   transform: translateY(-100%);
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth, easing transition */
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
 }
 
-/* Ensure the header comes back smoothly when scrolling up */
 .main-header {
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease-in-out;
 }
@@ -259,7 +258,7 @@ body {
   gap: 30px;
   width: 100%;
   background-color: rgb(255, 255, 255);
-  justify-content: center; /* Center the content horizontally on larger screens */
+  justify-content: center; 
 }
 
 .about-container{
@@ -307,7 +306,7 @@ body {
   font-family: var(--second-font);
   line-height: 1.6;
   margin-bottom: 15px;
-  text-align: justify; /* Keep text justified */
+  text-align: justify; 
  
 }
 
@@ -387,7 +386,7 @@ body {
 
 /* --- GET-IT-SOLD-CONTAINER --- */
 #features{
-  background-color: rgb(0, 0, 0); /* Ensure container background is black */
+  background-color: rgb(0, 0, 0); 
   width: 100%;
 }
 
@@ -407,8 +406,8 @@ body {
   padding-top: 96px;
   padding-left: 80px;
   padding-right: 80px;
-  justify-content: center; /* Center the content horizontally on larger screens */
-  flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+  justify-content: center; 
+  flex-wrap: wrap; 
 }
 
 
@@ -433,7 +432,7 @@ body {
 
 
 .text-content .eyebrow {
-  text-align: left; /* Center the eyebrow text within the text block */
+  text-align: left; 
   margin-bottom: 10px;
   margin-top: 10px;
   color: var(--font-main-color);
@@ -445,7 +444,7 @@ body {
  color: var(--font-main-color);
   font-size: var(--font-size-title);
   font-family: var(--main-font);
-  text-align: left; /* Center the heading within the text block */
+  text-align: left; 
   margin-bottom: 0;
   margin-top: 10px;
 }
@@ -464,7 +463,7 @@ body {
   font-size: var(--font-size);
   font-family: var(--second-font);
   line-height: 1.6;
-  text-align: justify; /* Keep text justified */
+  text-align: justify; 
 
 }
 
@@ -502,7 +501,7 @@ body {
   flex: 1;
   min-width: 300px;
   color: white;
-  margin-right: 50px; /* Reverse side compared to get-it-sold */
+  margin-right: 50px; 
 }
 
 .dont-just-list-it-content .text-content p {
@@ -516,7 +515,7 @@ body {
 .dont-just-list-it-content .image-content {
   flex: 1;
   min-width: 300px;
-  text-align: left; /* Align image left */
+  text-align: left; 
 }
 
 
@@ -558,8 +557,8 @@ body {
   font-size: var(--font-size);
   font-family: var(--second-font);
   line-height: 1.6;
-  text-align: justify; /* Keep text justified */
-  word-wrap: break-word; /* Prevent word cutting */
+  text-align: justify; 
+  word-wrap: break-word; 
 }
   
 .image-content {
@@ -709,8 +708,8 @@ body {
 }
 
 .logo {
-    height: 50px; /* Adjust the size of the logos */
-    margin-right: 50px; /* Adjust spacing between logos */
+    height: 50px; 
+    margin-right: 50px; 
     filter: invert(1);
 }
 
@@ -729,12 +728,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative; /* Ensure that it doesn't overlap */
+  position: relative; 
 }
 
 .services-container {
   width: 100%;
-  max-width: 1440px; /* overall page width */
+  max-width: 1440px; 
   padding-left: 140px;
   box-sizing: border-box;
    padding-bottom: 80px;
@@ -747,7 +746,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* for responsiveness */
+  flex-wrap: wrap; 
   gap: 40px;
   margin-bottom: 40px;
 }
@@ -781,12 +780,12 @@ body {
 .side-image {
   flex: 1;
   min-width: 300px;
-  height: 500px; /* Adjust height for the side image */
+  height: 500px; 
 }
 
 .side-image img {
   width: 100%;
-  height: 100%; /* Ensures the side image scales down based on flex */
+  height: 100%; 
   border-radius: 12px;
   object-fit: cover;
 }
@@ -800,8 +799,8 @@ body {
 
 .bottom-images img {
   width: 100%;
-  max-width: 400px; /* Or any fixed value you want */
-  height: 250px;     /* Make this equal to width for square */
+  max-width: 400px; 
+  height: 250px;     
   object-fit: cover;
   border-radius: 12px;
   flex-shrink: 0;
@@ -825,14 +824,14 @@ body {
   flex-direction: column;
   align-items: center;
   padding-top: 20px;
-  padding-left: 80px; /* Left padding */
-  padding-right: 80px; /* Right padding */
+  padding-left: 80px; 
+  padding-right: 80px; 
 }
 
 .gallery-content {
   align-self: flex-start;
   text-align: left;
-  margin-bottom: 20px; /* spacing below the heading */
+  margin-bottom: 20px; 
   padding-left: 80px;
 }
 
@@ -851,8 +850,8 @@ body {
 }
 
 .main-image {
-  width: calc(100% - 160px); /* Subtract padding from total width */
-  height: calc(100vh - 192px - 100px); /* Full height minus paddings & thumbnails */
+  width: calc(100% - 160px); 
+  height: calc(100vh - 192px - 100px); 
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -929,7 +928,7 @@ body {
   flex-wrap: wrap;
   max-width: 1400px;
   margin: 0 auto;
-  gap: 10px; /* Reduced from 15% to 10px */
+  gap: 10px; 
 }
 
 .contact-left,
@@ -993,8 +992,8 @@ body {
   border: 2px solid #fff;
   padding: 15px 30px;
   min-width: 180px;
-  background-color: #000;  /* Default: black background */
-  color: #fff;             /* Default: white text */
+  background-color: #000;  
+  color: #fff;             
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -1003,15 +1002,15 @@ body {
 }
 
 .contact-form button:hover {
-  background-color: #fff;  /* Hover: white background */
-  color: #000;             /* Hover: black text */
+  background-color: #fff;  
+  color: #000;             
 }
 
 .contact-text {
   max-width: 500px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center contents horizontally */
+  align-items: center; 
   text-align: center;
   gap: 10px;
   font-family: var(--second-font);
@@ -1061,8 +1060,8 @@ body {
   border: 2px solid #fff;
   padding: 15px 30px;
   min-width: 180px;
-  background-color: #000;  /* Default: black background */
-  color: #fff;             /* Default: white text */
+  background-color: #000;  
+  color: #fff;             
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -1071,8 +1070,8 @@ body {
 }
 
 .contact-btn:hover {
-  background-color: #fff;  /* Hover: white background */
-  color: #000;             /* Hover: black text */
+  background-color: #fff;  
+  color: #000;            
 }
 
 
@@ -1130,7 +1129,7 @@ body {
 
 .footer-subtitle,
 .follow-text {
-  font-size: var(--font-size-tagline); /* Reuse the same font style */
+  font-size: var(--font-size-tagline); 
   font-weight: bold;
   margin-bottom: 8px;
 }

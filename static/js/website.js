@@ -4,40 +4,29 @@ document.addEventListener('DOMContentLoaded', function () {
   const hamburger = document.querySelector('.hamburger-menu');
 
   let lastScrollTop = 0;
-  let scrollTimeout;
-
-  // Set the delay time before the header vanishes (in milliseconds)
-  const vanishDelay = 3000; // Adjust this value to change the delay (e.g., 3000ms = 3 seconds)
 
   window.addEventListener('scroll', function () {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // If scrolled past 50px, add the 'scrolled' class and adjust logo filter
+
+
     if (scrollTop > 50) {
       header.classList.add('scrolled');
-      logo && (logo.style.filter = 'invert(0%)');
-      hamburger && hamburger.classList.add('scrolled');
+      if (logo) logo.style.filter = 'invert(0%)';
+      if (hamburger) hamburger.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
-      logo && (logo.style.filter = 'invert(100%)');
-      hamburger && hamburger.classList.remove('scrolled');
+      if (logo) logo.style.filter = 'invert(100%)';
+      if (hamburger) hamburger.classList.remove('scrolled');
     }
 
+    // Hide on scroll down, show on scroll up
     if (scrollTop > lastScrollTop) {
       header.classList.add('hide-header');
     } else {
       header.classList.remove('hide-header');
     }
 
-
-    clearTimeout(scrollTimeout);
-
-    
-    scrollTimeout = setTimeout(function () {
-      header.classList.add('hide-header');
-    }, vanishDelay); 
-
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    lastScrollTop = scrollTop > 0 ? scrollTop : 0;
   });
 });
 
