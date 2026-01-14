@@ -275,6 +275,9 @@ body {
 }
 
 /* --- About Section Styles --- */
+#about {
+  background-color: #f7f7f7;
+}
 .about-section {
   display: flex;
   align-items: center;
@@ -282,7 +285,6 @@ body {
   padding-bottom: 96px;
   gap: 30px;
   width: 100%;
-  background-color: rgb(255, 255, 255);
   justify-content: center;
 }
 
@@ -406,7 +408,7 @@ body {
 
 /* --- GET-IT-SOLD-CONTAINER --- */
 #features {
-  background-color: rgb(0, 0, 0);
+  background-color: #1a1a1a;
   width: 100%;
 }
 
@@ -717,7 +719,7 @@ body {
 }
 
 #services {
-  background-color: white;
+  background-color: #f7f7f7;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -820,6 +822,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: #f7f7f7;
 }
 
 .gallery-container {
@@ -922,6 +925,7 @@ body {
   padding-left: 80px;
   padding-top: 96px;
   padding-bottom: 96px;
+  background-color: #f7f7f7;
 }
 
 .map-container {
