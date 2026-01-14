@@ -784,6 +784,8 @@ body {
 .side-image {
   width: 100%;
   max-height: 550px;
+  overflow: hidden; /* hide zoom overflow */
+  border-radius: 12px; /* optional luxury feel */
 }
 
 .side-image img {
@@ -791,8 +793,13 @@ body {
   max-height: 550px;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  transition: transform 0.5s ease; /* smooth hover zoom */
 }
 
+/* Optional: zoom on hover */
+.side-image img:hover {
+  transform: scale(1.05); /* subtle zoom */
+}
 .bottom-images {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -804,15 +811,25 @@ body {
   height: 250px;
   object-fit: cover;
   border-radius: 12px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  cursor: pointer;
 }
 
+/* Professional hover effect */
+.bottom-images img:hover {
+  transform: scale(1.08); /* smooth zoom */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* subtle depth */
+}
+
+/* Responsive for tablets / mobile */
 @media (max-width: 1100px) {
-  .services-image {
+  .side-image,
+  .bottom-images {
     grid-template-columns: 1fr;
   }
 
-  .bottom-images {
-    grid-template-columns: 1fr;
+  .bottom-images img {
+    height: 200px; /* slightly smaller on mobile */
   }
 }
 
